@@ -1,0 +1,39 @@
+.HeaderContainer {
+  border-top: 5px solid #ff0000;
+  padding: 0 10px 0 10px;
+}
+
+.MainMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.HeaderLogo {
+  color: #ffffff;
+  background-color: #ff0000;
+  padding: 26px 18px;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 0 0 10px 10px;
+}
+
+.TableLogo {
+  color: #ffffff;
+  background-color: #ff0000; 
+  padding: 0 30px; 
+  font-size: 25px; 
+  font-weight: bold;
+  justify-content: center;
+  border-radius: 0 0 10px 10px;
+}
+
+.MenuItem {
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 12px;
+  margin-top: 15px;
+}
+
+
