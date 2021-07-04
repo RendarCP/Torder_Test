@@ -1,0 +1,52 @@
+.CartConatainer{
+  background-color: #f5f5f5; 
+  position: absolute; 
+  right: 0;
+  top: 0; 
+  width: 20%;
+  height: 100%;
+  padding: 50px;
+  overflow-x: scroll;
+}
+
+.CartFixedButton {
+  position: fixed; 
+  bottom: 0;
+  right: 0;
+  border-top: 2px solid gray;
+}
+
+.Buttons{
+  padding: 20px;
+  width: 96px;
+  text-align: center; 
+  color: #ffffff; 
+  font-size: 30px; 
+  font-weight: bold;
+}
+
+.CartFont {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
+/* CartItem */
+.CartItemContainer {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.ItemDeleteBtn{
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #fc0000;
+  color: #fc0000; 
+  font-weight: bold;
+}
+
+.CartItemImage {
+  width: 40px; 
+  height: 40px;
+}

@@ -1,17 +1,16 @@
 import React from 'react'
 import '../../css/Item.css'
 
-function Item(){
+function Item({ isCart, list, onClickCartList }){
   return(
-    <div style={{ marginTop: 10 }}>
+    <div style={{ marginTop: 10 }} onClick={()=>onClickCartList(list)}>
       <div style={{ backgroundColor: 'black', borderRadius: 10 }}>
       <img
-        style={{ width: 400, height: 300, borderRadius: '10px 10px 0 0' }} 
-        src="https://s3.ap-northeast-2.amazonaws.com/images.orderhae.com/TPAY_GDR008/M00427/1620354409item_700X700_toJPEGBot.jpg" />
+        style={{ width: isCart ? 270 : 400, height: isCart ? 200 : 300, borderRadius: '10px 10px 0 0' }} 
+        src={list.itemImageUrl} />
         <div style={{ textAlign: 'center' }}>
-          <div className="ItemText">부산국제시장 떡볶이</div>
-          <div className="ItemText">(밀가래떡)</div>
-          <div className="ItemText">8,900원</div>
+          <div className="ItemText">{list.itemName}</div>
+          <div className="ItemText">{list.itemPrice}</div>
         </div>
       </div>
     </div>

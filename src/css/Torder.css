@@ -1,0 +1,9 @@
+.CartConatainer{
+  background-color: #f5f5f5; 
+  position: absolute; 
+  right: 0;
+  top: 0; 
+  width: 20%;
+  height: 100%;
+  padding: 50px;
+}

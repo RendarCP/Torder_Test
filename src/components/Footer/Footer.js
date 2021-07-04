@@ -3,10 +3,10 @@ import '../../css/Footer.css'
 import cart from '../../images/cart.png'
 import Spacer from '../Spacer/Spacer'
 
-function Footer(){
+function Footer({ onClickCart }){
   return(
     <div className="Container">
-      <div className="CartMenu">
+      <div className="CartMenu" onClick={onClickCart}>
         <img src={cart} style={{ width: 30, height: 30 }}/>
         <Spacer right={10} />
         <div style={{ color:'white', fontSize: 20 }}>장바구니</div>

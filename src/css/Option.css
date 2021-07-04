@@ -1,0 +1,32 @@
+.OptionItemContainer {
+  cursor: pointer;
+  display: flex; 
+  border: 1px solid #dcdcdc; 
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  align-items: center; 
+  justify-content: space-between;
+  padding: 20px;
+}
+.CheckoptionContatiner {
+  cursor: pointer;
+  display: flex;
+  border: 1px solid #fc0000;
+  border-radius: 10px;
+  background-color: #ffffff;
+  align-items: center; 
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.OptionItemImage {
+  width: 50px;
+  height: 50px;
+}
+
+.OptionPriceContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+

@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../css/Header.css'
 import Spacer from '../Spacer/Spacer'
+import LineText from '../LineText'
 
 function Header(){
   return(
@@ -38,11 +39,7 @@ function Header(){
       </div>
 
       {/* 메뉴부분 상호명 */}
-      <div style={{ display: 'flex', marginTop: 30 }}>
-        <div style={{ borderLeft: 'solid red'}}></div>
-        <Spacer right={20} />
-        <div style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>구로도떡볶이</div>
-      </div>
+      <LineText text="구로도떡볶이" />
     </div>
   )
 }
