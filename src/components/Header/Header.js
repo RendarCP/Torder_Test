@@ -2,23 +2,29 @@ import React from 'react'
 import '../../css/Header.css'
 import Spacer from '../Spacer/Spacer'
 import LineText from '../LineText'
+import ScrollspyNav from 'react-scrollspy-nav'
 
 function Header(){
   return(
     <div className="HeaderContainer">
       <div className="MainMenu">
+      <ScrollspyNav
+        scrollTargetIds={["section_1", "section_2",]}
+        activeNavClass="is-active"
+      >
         {/* 로고, 메뉴 부분 */}
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           <div className="HeaderLogo">구도로 떡볶이</div>
           <Spacer left={20} />
-          <div className="MenuItem">튀김</div>
+          <div className="MenuItem"><a href="#section_1">튀김</a></div>
           <Spacer left={20} />
           <div className="MenuItem">과일&디저트</div>
           <Spacer left={20} />
           <div className="MenuItem">탕</div>
           <Spacer left={20} />
-          <div className="MenuItem">맛있는추억</div>
+          <div className="MenuItem"><a href="#scriont_2">맛있는추억</a></div>
         </div>
+      </ScrollspyNav>
 
         {/* 테이블 번호부분 */}
         <div style={{ display: 'flex', flexDirection: 'row' }}>

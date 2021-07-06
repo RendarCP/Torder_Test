@@ -112,17 +112,21 @@ function Torder(){
       }
     ]
   }]
+  // 리덕스 
   const lists = useSelector(state => state)
   const dispatch = useDispatch();
-
+  // 액션함수 
   const onCreateCart = useCallback(data => dispatch(save_cart(data)), [dispatch]);
   const onPlusCart = useCallback(id => dispatch(plus_cart(id)), [dispatch]);
   const onMinusCart = useCallback(id => dispatch(minus_cart(id)), [dispatch]);
   const onDeleteCart = useCallback(id => dispatch(delete_cart(id)), [dispatch]);
   const onDeleteAll = useCallback(()=> dispatch(delete_all()), [dispatch]); 
-  const [isCart, setIsCart] = useState(false)
-  const [isMessage, setIsMessage] = useState(false)
-  const [price, setPrice] = useState(0)
+  
+  // 상태 부분
+  const [isCart, setIsCart] = useState(false) // 카트 부분 상태
+  const [isMessage, setIsMessage] = useState(false) // 메세지 상태
+  const [price, setPrice] = useState(0) // 총 가격 상태
+  // 장바구니 클릭
   const onClickCart = () => {
     setIsCart(!isCart)
     let priceCount = 0;
@@ -131,6 +135,7 @@ function Torder(){
     })
     setPrice(priceCount)
   }
+  // 오더 버튼 클릭시 
   const onClickOrder = () => {
     onDeleteAll()
     setIsMessage(true);
@@ -139,6 +144,7 @@ function Torder(){
       setIsMessage(false)
     }, 3000)
   }
+  // 카트 카운터 변경 
   const onClickCount = () => {
     let clickCount = 0;
     lists.cart.map(list => {
@@ -150,9 +156,9 @@ function Torder(){
     <div>
       <Header />
       {
-        ItemLists[0].categories.map(list => {
+        ItemLists[0].categories.map((list,index) => {
           return(
-            <div>
+            <div id={`section_${index}`}>
               <div style={{ padding: 20, color: 'white', fontSize: 30, fontWeight: 'bold'}}>{list.categoryName}</div>
               <ItemList 
                 lists={list.categoryItems} 
