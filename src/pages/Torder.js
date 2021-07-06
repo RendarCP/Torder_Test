@@ -5,10 +5,11 @@ import Header from '../components/Header/Header'
 import ItemList from '../components/Items/ItemList'
 import Footer from '../components/Footer/Footer'
 import Cart from '../components/Cart/Cart'
+import OrderMessage from '../components/OrderMessage'
 // css
 import '../css/Torder.css'
 
-import { save_cart, change_cart, delete_cart} from '../modules/cart'
+import { save_cart, plus_cart, minus_cart, delete_cart, delete_all} from '../modules/cart'
 
 function Torder(){
   const ItemLists = [{
@@ -115,31 +116,44 @@ function Torder(){
   const dispatch = useDispatch();
 
   const onCreateCart = useCallback(data => dispatch(save_cart(data)), [dispatch]);
-  const onChangeCart = useCallback(id => dispatch(change_cart(id)), [dispatch]);
+  const onPlusCart = useCallback(id => dispatch(plus_cart(id)), [dispatch]);
+  const onMinusCart = useCallback(id => dispatch(minus_cart(id)), [dispatch]);
   const onDeleteCart = useCallback(id => dispatch(delete_cart(id)), [dispatch]);
+  const onDeleteAll = useCallback(()=> dispatch(delete_all()), [dispatch]); 
   const [isCart, setIsCart] = useState(false)
-  const [cartLists, setCartLists] = useState([])
+  const [isMessage, setIsMessage] = useState(false)
+  const [price, setPrice] = useState(0)
   const onClickCart = () => {
     setIsCart(!isCart)
+    let priceCount = 0;
+    lists.cart.map(list => {
+      priceCount += list.itemPrice
+    })
+    setPrice(priceCount)
   }
-  const onClickCartList = (data) => {
-    console.log(data)
-    const Item = {
-      itemName: data.itemName,
-      itemPrice: data.itemPrice,
-      count: 1,
-    }
-    setCartLists([...cartLists, Item])
+  const onClickOrder = () => {
+    onDeleteAll()
+    setIsMessage(true);
+    setIsCart(false)
+    setTimeout(()=> {
+      setIsMessage(false)
+    }, 3000)
+  }
+  const onClickCount = () => {
+    let clickCount = 0;
+    lists.cart.map(list => {
+      clickCount += list.itemPrice * list.count
+    })
+    setPrice(clickCount)
   }
   return(
-    console.log('test', lists),
     <div>
       <Header />
       {
         ItemLists[0].categories.map(list => {
           return(
             <div>
-              <div>{list.categoryName}</div>
+              <div style={{ padding: 20, color: 'white', fontSize: 30, fontWeight: 'bold'}}>{list.categoryName}</div>
               <ItemList 
                 lists={list.categoryItems} 
                 isCart={isCart}
@@ -154,7 +168,16 @@ function Torder(){
         isCart ? <Cart 
           onClickCart={onClickCart}
           cartLists={lists.cart}
+          onDeleteCart={onDeleteCart}
+          onPlusCart={onPlusCart}
+          onMinusCart={onMinusCart}
+          onClickOrder={onClickOrder}
+          onClickCount={onClickCount}
+          price={price}
         /> : null
+      }
+      {
+        isMessage ? <OrderMessage /> : null
       }
     </div>
   )

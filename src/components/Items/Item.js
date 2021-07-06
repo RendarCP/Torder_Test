@@ -10,7 +10,7 @@ function Item({ isCart, list, onClickCartList }){
         src={list.itemImageUrl} />
         <div style={{ textAlign: 'center' }}>
           <div className="ItemText">{list.itemName}</div>
-          <div className="ItemText">{list.itemPrice}</div>
+          <div className="ItemText">{list.itemPrice}원</div>
         </div>
       </div>
     </div>

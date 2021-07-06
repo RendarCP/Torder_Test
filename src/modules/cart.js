@@ -1,24 +1,37 @@
 const SAVE_CART = 'cart/SAVE_CART';
 const DELETE_CART = 'cart/DELETE_CART';
-const CHANGE_CART = 'cart/CHANGE_CART'
+const PLUS_CART = 'cart/PLUS_CART'
+const MINUS_CART = 'cart/MINUS_CART'
+const DELETE_ALL = 'cart/DELETE_ALL'
 
+let nextId = 1;
 export const save_cart = (data) => ({ 
   type: SAVE_CART, 
   cartLists: {
+    id: nextId++,
     itemName: data.itemName,
     itemPrice: data.itemPrice,
-    count: 1,
+    count: 1
   }
 });
 
-export const change_cart = (id) => ({
-  type: CHANGE_CART,
+export const plus_cart = (id) => ({
+  type: PLUS_CART,
+  id
+})
+
+export const minus_cart = (id) => ({
+  type: MINUS_CART,
   id
 })
 
 export const delete_cart = id => ({
   type: DELETE_CART,
   id
+});
+
+export const delete_all = () => ({
+  type: DELETE_ALL,
 });
 
 
@@ -32,10 +45,16 @@ export default function cart(state = initialstate, action){
       return state.filter(
         list => list.id !== action.id
       )
-    case CHANGE_CART:
+    case PLUS_CART:
       return state.map(
-        list => list.id === action.id ? {...list, count: action.count+1} : list
+        list => list.id === action.id ? {...list, count: list.count+1 } : list
       )
+    case MINUS_CART:
+      return state.map(
+        list => list.id === action.id ? {...list, count: list.count-1 } : list
+      )
+    case DELETE_ALL:
+      return state.splice(0, state.length)
     default:
       return state;
   }
